@@ -1,0 +1,143 @@
+/*
+ =========================================================
+ @Material responsive - v 1.0
+ @Create Patiya 
+ @Date 16-10-2563
+ =========================================================
+*/
+/* ขนาดหน้าจอระหว่าง 320 - 424 คือขนาดหน้าจอของโทรศัพท์ iphone */
+/* ขนาดหน้าจอระหว่าง 425 - 767 คือขนาดหน้าจอของโทรศัพท์ iphonex - samsung Note - ipad */
+/* ขนาดหน้าจอระหว่าง 768 - 1024 คือขนาดหน้าจอของโทรศัพท์  ipad pro - Laptop */
+@media screen and (min-width: 320px) and (max-width: 424px) {
+  .nav-item {
+    width: 100%;
+  }
+  h4 {
+    font-size: 16px;
+  }
+  .h4 {
+    font-size: 16px;
+  }
+  .breadcrumb {
+    font-size: 12px;
+  }
+  .main-panel {
+    > .content {
+      padding: 10px 0px;
+    }
+  }
+  .mt-0-res {
+    margin-top: 0px;
+  }
+  .card-body {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .container-fluid {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .hi-res {
+    height: 46px !important;
+  }
+  .border-wizard-aos {
+    font-size: 18px !important;
+    width: 30px !important;
+    height: 30px !important;
+    padding-top: 4px !important;
+    padding-right: 0px !important;
+    margin-bottom: 4px !important;
+  }
+  .border-wizard2-aos {
+    font-size: 18px !important;
+    width: 30px !important;
+    height: 30px !important;
+    padding-top: 4px !important;
+    padding-right: 0px !important;
+    margin-bottom: 4px !important;
+  }
+  .card-wizard {
+    .nav.nav-pills {
+      .nav-item {
+        .nav-link {
+          font-size: 14px !important;
+          padding: 6px 10px !important;
+        }
+      }
+    }
+  }
+  .nav-item-wizard-aos {
+    background-color: #2574b3;
+    border-radius: 5px;
+    margin: -5px 0px -5px 0px !important;
+  }
+  .pt-0-res {
+    padding-top: 0rem !important;
+  }
+}
+@media screen and (min-width: 425px) and (max-width: 767px) {
+  .nav-item {
+    width: 100%;
+  }
+  h4 {
+    font-size: 16px;
+  }
+  .h4 {
+    font-size: 16px;
+  }
+  .breadcrumb {
+    font-size: 16px;
+  }
+  .main-panel {
+    > .content {
+      padding: 20px 0px;
+    }
+  }
+  .mt-0-res {
+    margin-top: 0px;
+  }
+  .card-body {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .container-fluid {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .hi-res {
+    height: 54px !important;
+  }
+  .border-wizard-aos {
+    font-size: 24px !important;
+    width: 50px !important;
+    height: 50px !important;
+    padding-top: 10px !important;
+    padding-right: 0px !important;
+    margin-bottom: 10px !important;
+  }
+  .border-wizard2-aos {
+    font-size: 24px !important;
+    width: 50px !important;
+    height: 50px !important;
+    padding-top: 10px !important;
+    padding-right: 0px !important;
+    margin-bottom: 10px !important;
+  }
+  .card-wizard {
+    .nav.nav-pills {
+      .nav-item {
+        .nav-link {
+          font-size: 16px !important;
+        }
+      }
+    }
+  }
+  .nav-item-wizard-aos {
+    background-color: #2574b3;
+    border-radius: 5px;
+    margin: -5px 0px -5px 0px !important;
+  }
+  .pt-0-res {
+    padding-top: 0rem !important;
+  }
+}
