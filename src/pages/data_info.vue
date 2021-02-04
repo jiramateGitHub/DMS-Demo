@@ -1,5 +1,11 @@
 <template>
   <div>
+    <div
+      class="page-header header-filter "
+      data-parallax="true"
+      style="background-image: url('/assets/img/examples/office2.jpg'); height: 20vh;"
+    >
+    </div>
     <div class="main main-raised " style="padding-top: 130px">
       <div class="container">
         <div class="row">

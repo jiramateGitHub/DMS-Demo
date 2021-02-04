@@ -1,14 +1,14 @@
 <template>
   <div>
     <nav
-      class="navbar fixed-top navbar-expand-lg"
+      class="navbar fixed-top navbar-expand-lg navbar-color-on-scroll "
       color-on-scroll="100"
       id="sectionsNav"
     >
       <div class="container">
         <div class="navbar-translate">
           <a class="navbar-brand" href="#" @click="home()">
-            Data Menagement System
+            Data Menagement
           </a>
           <button
             class="navbar-toggler"

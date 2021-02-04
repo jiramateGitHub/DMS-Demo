@@ -19,7 +19,7 @@
 }
 
 html {
-    font-family: sans-serif;
+    font-family: "Prompt" ,"Roboto", "Helvetica", "Arial", sans-serif;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
@@ -30,6 +30,11 @@ html {
 @-ms-viewport {
     width: device-width;
 }
+
+.serif-font {
+  font-family: "Prompt" ,"Roboto Slab", "Times New Roman", serif;
+}
+
 
 article,
 aside,
@@ -47,7 +52,7 @@ section {
 
 body {
     margin: 0;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-family: "Prompt" ,"Roboto", "Helvetica", "Arial", sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -424,7 +429,7 @@ template {
 }
 
 html {
-    font-family: sans-serif;
+     font-family: "Prompt" ,"Roboto", "Helvetica", "Arial", sans-serif;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
@@ -452,7 +457,7 @@ section {
 
 body {
     margin: 0;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-family: "Prompt" ,"Roboto", "Helvetica", "Arial", sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -584,12 +589,11 @@ a:not([href]):not([tabindex]):focus {
     outline: 0;
 }
 
-pre,
 code,
 kbd,
+pre,
 samp {
-    font-family: monospace, monospace;
-    font-size: 1em;
+  font-family: "Prompt" ,SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 pre {
@@ -924,7 +928,7 @@ code,
 kbd,
 pre,
 samp {
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", "Prompt", monospace;
 }
 
 code {
@@ -5680,7 +5684,7 @@ button.close {
     z-index: 1070;
     display: block;
     margin: 0;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-family: "Prompt", "Roboto", "Helvetica", "Arial", sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -5805,7 +5809,7 @@ button.close {
     z-index: 1060;
     display: block;
     max-width: 276px;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-family: "Prompt", "Roboto", "Helvetica", "Arial", sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: 1.5;
@@ -10970,7 +10974,7 @@ legend {
 }
 
 .serif-font {
-    font-family: "Roboto Slab", "Times New Roman", serif;
+    font-family: "Prompt", "Roboto Slab", "Times New Roman", serif;
 }
 
 * {
@@ -15117,7 +15121,7 @@ h6,
 .h2,
 .h3,
 .h4 {
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-family: "Prompt", "Roboto", "Helvetica", "Arial", sans-serif;
     font-weight: 300;
     line-height: 1.5em;
 }
@@ -15208,7 +15212,7 @@ small,
 .footer-big h4,
 .media .media-heading {
     font-weight: 700;
-    font-family: "Roboto Slab", "Times New Roman", serif;
+    font-family: "Prompt", "Roboto Slab", "Times New Roman", serif;
 }
 
 .title,
@@ -18248,7 +18252,7 @@ thead.thead-inverse th,
 }
 
 .media .media-heading small {
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-family: "Prompt", "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
 .media .media-body {
