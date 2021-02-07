@@ -24,7 +24,7 @@
                   aria-expanded="false"
                   aria-controls="collapseThree"
                 >
-                  กลุ่มชุดข้อมูล
+                  หมวดหมู่ข้อมูล
                   <i class="material-icons">keyboard_arrow_down</i>
                 </a>
               </h5>
@@ -44,7 +44,7 @@
                       value=""
                       checked
                     />
-                    All
+                    ทั้งหมด
                     <span class="form-check-sign">
                       <span class="check"></span>
                     </span>
@@ -53,7 +53,7 @@
                 <div class="form-check">
                   <label class="form-check-label">
                     <input class="form-check-input" type="checkbox" value="" />
-                    Polo Ralph Lauren
+                   ข้อมูลส่วนบุคคล
                     <span class="form-check-sign">
                       <span class="check"></span>
                     </span>
@@ -62,7 +62,7 @@
                 <div class="form-check">
                   <label class="form-check-label">
                     <input class="form-check-input" type="checkbox" value="" />
-                    Wooyoungmi
+                    ข้อมูลความมั่นคง
                     <span class="form-check-sign">
                       <span class="check"></span>
                     </span>
@@ -71,7 +71,82 @@
                 <div class="form-check">
                   <label class="form-check-label">
                     <input class="form-check-input" type="checkbox" value="" />
-                    Alexander McQueen
+                   ข้อมูลความลับราชการ
+                    <span class="form-check-sign">
+                      <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="" />
+                   ข้อมูลสาธารณะ
+                    <span class="form-check-sign">
+                      <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card card-collapse">
+            <div class="card-header" role="tab" id="headingThree">
+              <h5 class="mb-0">
+                <a
+                  class="collapsed"
+                  data-toggle="collapse"
+                  href="#collapseThree"
+                  aria-expanded="false"
+                  aria-controls="collapseThree"
+                >
+                  กลุ่มข้อมูล
+                  <i class="material-icons">keyboard_arrow_down</i>
+                </a>
+              </h5>
+            </div>
+            <div
+              id="collapseThree"
+              class="collapse show"
+              role="tabpanel"
+              aria-labelledby="headingThree"
+            >
+              <div class="card-body">
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      checked
+                    />
+                    ทั้งหมด
+                    <span class="form-check-sign">
+                      <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="" />
+                   การศึกษา
+                    <span class="form-check-sign">
+                      <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="" />
+                    สถิติทางการ
+                    <span class="form-check-sign">
+                      <span class="check"></span>
+                    </span>
+                  </label>
+                </div>
+                <div class="form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" value="" />
+                    สังคมและสวัสดิการ
                     <span class="form-check-sign">
                       <span class="check"></span>
                     </span>

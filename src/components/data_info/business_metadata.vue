@@ -28,12 +28,8 @@
             <tr class="row">
               <td class="col-md-3"><b>คําสําคัญ (Keywords)</b></td>
               <td class="col-md-9 ml-auto">
-                <span class="badge badge-pill badge-secondary">Default</span
-                >&nbsp;<span class="badge badge-pill badge-secondary"
-                  >Default</span
-                >&nbsp;<span class="badge badge-pill badge-secondary"
-                  >Default</span
-                >
+                <span class="badge badge-pill badge-secondary">นักศึกษา</span
+                >&nbsp;
               </td>
             </tr>
             <tr class="row">

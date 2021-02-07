@@ -8,36 +8,39 @@
           <table class="table table-shopping">
             <thead>
               <tr>
-                <th>Product</th>
-                <th class="th-description">Color</th>
-                <th class="th-description">Size</th>
-                <th class="text-right">Price</th>
-                <th class="text-right">Qty</th>
-                <th></th>
+                <th>ชื่อชุดข้อมูล</th>
+                <th class="th-description">เลขที่เมทาดาตา</th>
+                <th class="th-description">กลุ่มข้อมูล</th>
+                <th class="th-description">หมวดหมู่ข้อมูล</th>
+                <th class="th-description">คําสําคัญ</th>
               </tr>
             </thead>
             <tbody>
               <tr @click="info()">
                 <td class="td-name">
-                  <a href="#/data_info">Spring Jacket</a>
+                  <a href="#/data_info">ข้อมูลจำนวนนักศึกษากรุงเทพมหานคร</a>
                   <br />
-                  <small>by Dolce&Gabbana</small>
+                  <small>ปรับปรุงล่าสุด 30 มกราคม 2563</small>
                 </td>
-                <td>Red</td>
-                <td>M</td>
-                <td class="td-number text-right"><small>&euro;</small>549</td>
-                <td class="td-number">1</td>
+                <td>01-01-01</td>
+                <td>สังคมและสวัสดิการ</td>
+                <td>สาธารณะ</td>
+                <td>
+                  <span class="badge badge-pill badge-secondary">นักศึกษา</span>
+                </td>
               </tr>
-               <tr @click="info()">
+              <tr @click="info()">
                 <td class="td-name">
-                  <a href="#/data_info">Spring Jacket</a>
+                  <a href="#/data_info">ข้อมูลการเข้าเรียนนักศึกษากรุงเทพมหานคร</a>
                   <br />
-                  <small>by Dolce&Gabbana</small>
+                  <small>ปรับปรุงล่าสุด 30 มกราคม 2563</small>
                 </td>
-                <td>Red</td>
-                <td>M</td>
-                <td class="td-number text-right"><small>&euro;</small>549</td>
-                <td class="td-number">1</td>
+                <td>01-01-02</td>
+                <td>สถิติทางการ</td>
+                <td>สาธารณะ</td>
+                <td>
+                  <span class="badge badge-pill badge-secondary">นักศึกษา</span>
+                </td>
               </tr>
             </tbody>
           </table>
