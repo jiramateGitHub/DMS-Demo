@@ -65,7 +65,6 @@
                 </h5>
               </div>
             </div>
-
             <div class="row">
               <div class="col-md-4">
                 <div class="info">
@@ -110,7 +109,7 @@
           </div>
           <!--     *********    END FEATURES 1      *********      -->
           <!--     *********     FEATURES 3      *********      -->
-          <div class="features-3">
+          <!-- <div class="features-3">
             <div class="row">
               <div class="col-md-6">
                 <div class="phone-container">
@@ -118,7 +117,6 @@
                 </div>
               </div>
               <div class="col-md-6">
-                <!-- Some <br /> tags to push the text to align with the image, you can remove it if you have more text on the right side :-) -->
                 <h2 class="title">Your life will be much easier</h2>
                 <div class="info info-horizontal">
                   <div class="icon icon-primary">
@@ -161,7 +159,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
           <!--     *********    END FEATURES 3      *********      -->
         </div>
       </div>

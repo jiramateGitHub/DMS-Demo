@@ -16,17 +16,20 @@
             </tr>
           </thead>
           <tbody>
+            <tr v-if="getDataTechnical.dms_technical_details.length == 0">
+              <td colspan="8" class="text-center">ไม่พบรายการ</td>
+            </tr>
             <tr
               v-for="(value, index) in getDataTechnical.dms_technical_details"
               :key="index"
             >
-              <td class="text-center">{{index+1}}</td>
-              <td class="text-left">{{value.tcd_attribute}}</td>
-              <td class="text-center">{{value.tcd_type}}</td>
-              <td class="text-center">{{value.tcd_length}}</td>
-              <td class="text-center">{{value.tcd_key}}</td>
-              <td class="text-left">{{value.tcd_sample}}</td>
-              <td class="text-left">{{value.tcd_comment}}</td>
+              <td class="text-center">{{ index + 1 }}</td>
+              <td class="text-left">{{ value.tcd_attribute }}</td>
+              <td class="text-center">{{ value.tcd_type }}</td>
+              <td class="text-center">{{ value.tcd_length }}</td>
+              <td class="text-center">{{ value.tcd_key }}</td>
+              <td class="text-left">{{ value.tcd_sample }}</td>
+              <td class="text-left">{{ value.tcd_comment }}</td>
               <td class="text-center">
                 <div class="form-check">
                   <label class="form-check-label">

@@ -17,11 +17,11 @@
             </tr>
             <tr class="row">
               <td class="col-md-3"><b>วันที่สร้างชุดข้อมูล</b></td>
-              <td class="col-md-9"> {{ getDataBusiness.meta_create_time }}</td>
+              <td class="col-md-9"> {{ getDataBusiness.meta_create_time.substring(0,10) }}</td>
             </tr>
             <tr class="row">
               <td class="col-md-3"><b>วันที่ปรับปรุงล่าสุด</b></td>
-             <td class="col-md-9"> {{ getDataBusiness.meta_update_time }}</td>
+             <td class="col-md-9"> {{ getDataBusiness.meta_update_time.substring(0,10) }}</td>
             </tr>
             <tr class="row">
               <td class="col-md-3"><b>กลุ่มข้อมูล</b></td>
