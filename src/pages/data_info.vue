@@ -4,19 +4,17 @@
       class="page-header header-filter "
       data-parallax="true"
       style="background-image: url('/assets/img/examples/office2.jpg'); height: 20vh;"
-    >
-    </div>
-    <div class="main main-raised " style="padding-top: 130px">
+    ></div>
+    <div class="main main-raised " style="padding-top: 20px">
       <div class="container">
         <div class="row">
           <div class="card bg-info">
             <div class="card-body">
               <h3 class="card-title">
-                <a href="#">"ข้อมูลจำนวนนักศึกษากรุงเทพมหานคร"</a>
+                <a href="#">"{{getDataBusiness.meta_name}}"</a>
               </h3>
               <p class="card-description">
-                จำนวนนักเรียนและจำนวนห้องเรียน ของ โรงเรียนสังกัดภายใต้ สพฐ
-                ในพื้นที่เขตกรุงเทพมหานคร
+                {{getDataCurrent.dms_business_descriptions[0].bsds_text}}
               </p>
             </div>
           </div>
@@ -30,6 +28,15 @@
             <TechnicalMetadataTable />
           </div>
         </div>
+        <!-- <div class="row">
+          <div class="col-md-6">
+            <pre>{{ getDataBusiness }}</pre>
+            <pre>{{ getDataCurrent }}</pre>
+          </div>
+          <div class="col-md-6">
+            <pre>{{ getDataTechnical }}</pre>
+          </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -38,7 +45,7 @@
 import BusinessMetadata from "../components/data_info/business_metadata.vue";
 import TechnicalMetadata from "../components/data_info/technical_metadata.vue";
 import TechnicalMetadataTable from "../components/data_info/technical_metadata_table.vue";
-
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "DataSearch",
   props: {
@@ -52,10 +59,15 @@ export default {
   data() {
     return {};
   },
+  computed: {
+    ...mapGetters({
+      getDataBusiness: "data_search/getDataBusiness",
+      getDataTechnical: "data_search/getDataTechnical",
+      getDataCurrent: "data_search/getDataCurrent",
+    }),
+  },
   methods: {
-    search() {
-      this.$router.push({ path: "/data_search" });
-    },
+    ...mapActions({}),
   },
 };
 </script>

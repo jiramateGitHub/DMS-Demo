@@ -2,44 +2,54 @@
   <div>
     <div class="card card-plain">
       <div class="card-body">
-        <h3 class="card-title">พบ 1 ชุดข้อมูลสำหรับ "...."</h3>
+        <h3 class="card-title">
+          พบ {{ getDataList.length }} ชุดข้อมูลสำหรับ "{{ getDataNameCurrent }}"
+        </h3>
         <br />
         <div class="table-responsive">
           <table class="table table-shopping">
             <thead>
               <tr>
-                <th>ชื่อชุดข้อมูล</th>
-                <th class="th-description">เลขที่เมทาดาตา</th>
-                <th class="th-description">กลุ่มข้อมูล</th>
-                <th class="th-description">หมวดหมู่ข้อมูล</th>
-                <th class="th-description">คําสําคัญ</th>
+                <th width="35%">ชื่อชุดข้อมูล</th>
+                <th class="th-description" width="25%">เจ้าของข้อมูล</th>
+                <th class="th-description" width="15%">รูปแบบข้อมูล</th>
+                <th class="th-description" width="25%">คําสําคัญ</th>
               </tr>
             </thead>
             <tbody>
-              <tr @click="info()">
+              <tr
+                v-for="(value, index) in getDataList"
+                :key="index"
+                @click="info(value)"
+              >
                 <td class="td-name">
-                  <a href="#/data_info">ข้อมูลจำนวนนักศึกษากรุงเทพมหานคร</a>
+                  <a >{{ value.dms_metadatum.meta_name }}</a>
                   <br />
-                  <small>ปรับปรุงล่าสุด 30 มกราคม 2563</small>
+                  <small
+                    >ปรับปรุงล่าสุด
+                    {{
+                      value.dms_metadatum.meta_update_time.substring(0, 10)
+                    }}</small
+                  >
                 </td>
-                <td>01-01-01</td>
-                <td>สังคมและสวัสดิการ</td>
-                <td>สาธารณะ</td>
+                <td>{{ value.dms_business_descriptions[0].bsds_owner }}</td>
                 <td>
-                  <span class="badge badge-pill badge-secondary">นักศึกษา</span>
+                  <span
+                    v-for="(value2, index2) in value.dms_base_formats"
+                    :key="index2"
+                    class="badge badge-pill badge-info"
+                    style="margin-right : 3px"
+                    >{{ value2.ft_text }}</span
+                  >
                 </td>
-              </tr>
-              <tr @click="info()">
-                <td class="td-name">
-                  <a href="#/data_info">ข้อมูลการเข้าเรียนนักศึกษากรุงเทพมหานคร</a>
-                  <br />
-                  <small>ปรับปรุงล่าสุด 30 มกราคม 2563</small>
-                </td>
-                <td>01-01-02</td>
-                <td>สถิติทางการ</td>
-                <td>สาธารณะ</td>
                 <td>
-                  <span class="badge badge-pill badge-secondary">นักศึกษา</span>
+                  <span
+                    v-for="(value3, index3) in value.dms_business_keywords"
+                    :key="index3"
+                    class="badge badge-pill badge-secondary"
+                    style="margin-right : 3px"
+                    >{{ value3.bsk_text }}</span
+                  >
                 </td>
               </tr>
             </tbody>
@@ -50,6 +60,7 @@
   </div>
 </template>
 <script>
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "DataList",
   props: {
@@ -58,8 +69,24 @@ export default {
   data() {
     return {};
   },
+  computed: {
+    ...mapGetters({
+      getDataList: "data_search/getDataList",
+      getDataNameCurrent: "data_search/getDataNameCurrent",
+    }),
+  },
   methods: {
-    info() {
+    ...mapActions({
+      findData: "data_search/findData",
+      setDataCurrent: "data_search/setDataCurrent",
+      fetchBusinessData: "data_search/fetchBusinessData",
+      fetchTechnicalData: "data_search/fetchTechnicalData",
+    }),
+    async info(value) {
+      console.log(value);
+      await this.setDataCurrent(value);
+      await this.fetchBusinessData(value.bsm_meta_id);
+      await this.fetchTechnicalData(value.bsm_meta_id);
       this.$router.push({ path: "/data_info" });
     },
   },

@@ -10,38 +10,36 @@
           <div class="col-md-10 ml-auto mr-auto">
             <div class="card card-raised card-form-horizontal">
               <div class="card-body">
-                <form method="" action="">
-                  <div class="row">
-                    <div class="col-md-9">
-                      <div class="form-group">
-                        <input
-                          type="text"
-                          value=""
-                          placeholder="ค้นหาชุดข้อมูล"
-                          class="form-control"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <button
-                        type="button"
-                        class="btn btn-primary btn-block"
-                        @click="search()"
-                      >
-                        ค้นหา
-                      </button>
+                <div class="row">
+                  <div class="col-md-9">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        value=""
+                        placeholder="ค้นหาชุดข้อมูล"
+                        class="form-control"
+                        v-model="search_text"
+                      />
                     </div>
                   </div>
-                </form>
+                  <div class="col-md-3">
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-block"
+                      @click="search()"
+                    >
+                      ค้นหา
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="main main-raised" >
-      <div class="container">
-        <div class="row">
+    <div class="main main-raised">
+        <div class="row margin-list" >
           <div class="col-md-3">
             <DataRefine />
           </div>
@@ -49,14 +47,13 @@
             <DataList />
           </div>
         </div>
-      </div>
     </div>
   </div>
 </template>
 <script>
 import DataRefine from "../components/data_search/data_refine.vue";
 import DataList from "../components/data_search/data_list.vue";
-
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "DataSearch",
   props: {
@@ -67,15 +64,29 @@ export default {
     DataList,
   },
   data() {
-    return {};
+    return {
+      search_text: "",
+    };
+  },
+  computed: {
+    ...mapGetters({
+      getDataList: "data_search/getDataList",
+      getDataNameCurrent: "data_search/getDataNameCurrent",
+    }),
   },
   methods: {
-    search() {
-      this.$router.push({ path: "/data_search" });
+    ...mapActions({
+      findData: "data_search/findData",
+    }),
+    async search() {
+      await this.findData(this.search_text);
     },
   },
 };
 </script>
 <style>
-
+.margin-list{
+  margin-left: 5%;
+  margin-right: 5%;
+}
 </style>

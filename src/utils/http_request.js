@@ -1,4 +1,5 @@
 import Axios from "axios";
+import { mapGetters } from "vuex";
 const baseApiURL = process.env.VUE_APP_API_ROOT;
 const JWTToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE3LCJpYXQiOjE2MTIyNTY5ODc0MzIsImV4cCI6MTYxMjI1Njk4NzQ5Mn0.snWtpv4xdtGDvcRf6dBudORXNm89d7PhYlB4wldaGxU"
 const headers = {
@@ -48,5 +49,10 @@ export default {
             // return it
             return dataPromise
         }
+    },
+    computed: {
+        ...mapGetters({
+            jwtToken: "auth_dev/getToken",
+        }),
     },
 };
