@@ -15,14 +15,14 @@
         </h3>
         <div id="accordion" role="tablist">
           <div class="card card-collapse">
-            <div class="card-header" role="tab" id="headingThree">
+            <div class="card-header" role="tab" id="heading1">
               <h5 class="mb-0">
                 <a
                   class="collapsed"
                   data-toggle="collapse"
-                  href="#collapseThree"
+                  href="#collapse1"
                   aria-expanded="false"
-                  aria-controls="collapseThree"
+                  aria-controls="collapse1"
                 >
                   หมวดหมู่ข้อมูล
                   <i class="material-icons">keyboard_arrow_down</i>
@@ -30,13 +30,17 @@
               </h5>
             </div>
             <div
-              id="collapseThree"
+              id="collapse1"
               class="collapse show"
               role="tabpanel"
-              aria-labelledby="headingThree"
+              aria-labelledby="heading1"
             >
               <div class="card-body">
-                <div class="form-check">
+                <div
+                  v-for="(value, index) in getFilterGroup.dms_base_categories"
+                  :key="index"
+                  class="form-check"
+                >
                   <label class="form-check-label">
                     <input
                       class="form-check-input"
@@ -44,43 +48,7 @@
                       value=""
                       checked
                     />
-                    ทั้งหมด
-                    <span class="form-check-sign">
-                      <span class="check"></span>
-                    </span>
-                  </label>
-                </div>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="" />
-                   ข้อมูลส่วนบุคคล
-                    <span class="form-check-sign">
-                      <span class="check"></span>
-                    </span>
-                  </label>
-                </div>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="" />
-                    ข้อมูลความมั่นคง
-                    <span class="form-check-sign">
-                      <span class="check"></span>
-                    </span>
-                  </label>
-                </div>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="" />
-                   ข้อมูลความลับราชการ
-                    <span class="form-check-sign">
-                      <span class="check"></span>
-                    </span>
-                  </label>
-                </div>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="" />
-                   ข้อมูลสาธารณะ
+                    {{ value.bc_name }} ({{value.count}})
                     <span class="form-check-sign">
                       <span class="check"></span>
                     </span>
@@ -90,14 +58,14 @@
             </div>
           </div>
           <div class="card card-collapse">
-            <div class="card-header" role="tab" id="headingThree">
+            <div class="card-header" role="tab" id="heading2">
               <h5 class="mb-0">
                 <a
                   class="collapsed"
                   data-toggle="collapse"
-                  href="#collapseThree"
+                  href="#collapse2"
                   aria-expanded="false"
-                  aria-controls="collapseThree"
+                  aria-controls="collapse2"
                 >
                   กลุ่มข้อมูล
                   <i class="material-icons">keyboard_arrow_down</i>
@@ -105,13 +73,17 @@
               </h5>
             </div>
             <div
-              id="collapseThree"
+              id="collapse2"
               class="collapse show"
               role="tabpanel"
-              aria-labelledby="headingThree"
+              aria-labelledby="heading2"
             >
               <div class="card-body">
-                <div class="form-check">
+                <div
+                  v-for="(value, index) in getFilterGroup.dms_base_datagroups"
+                  :key="index"
+                  class="form-check"
+                >
                   <label class="form-check-label">
                     <input
                       class="form-check-input"
@@ -119,34 +91,7 @@
                       value=""
                       checked
                     />
-                    ทั้งหมด
-                    <span class="form-check-sign">
-                      <span class="check"></span>
-                    </span>
-                  </label>
-                </div>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="" />
-                   การศึกษา
-                    <span class="form-check-sign">
-                      <span class="check"></span>
-                    </span>
-                  </label>
-                </div>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="" />
-                    สถิติทางการ
-                    <span class="form-check-sign">
-                      <span class="check"></span>
-                    </span>
-                  </label>
-                </div>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="" />
-                    สังคมและสวัสดิการ
+                    {{ value.grp_name }} ({{value.count}})
                     <span class="form-check-sign">
                       <span class="check"></span>
                     </span>
@@ -156,14 +101,14 @@
             </div>
           </div>
           <div class="card card-collapse">
-            <div class="card-header" role="tab" id="headingThree">
+            <div class="card-header" role="tab" id="heading3">
               <h5 class="mb-0">
                 <a
                   class="collapsed"
                   data-toggle="collapse"
-                  href="#collapseTwo"
+                  href="#collapse3"
                   aria-expanded="false"
-                  aria-controls="collapseTwo"
+                  aria-controls="collapse3"
                 >
                   รูปแบบ
                   <i class="material-icons">keyboard_arrow_down</i>
@@ -171,13 +116,17 @@
               </h5>
             </div>
             <div
-              id="collapseTwo"
+              id="collapse3"
               class="collapse show"
               role="tabpanel"
-              aria-labelledby="headingThree"
+              aria-labelledby="heading3"
             >
               <div class="card-body">
-                <div class="form-check">
+                <div
+                  v-for="(value, index) in getFilterGroup.dms_base_formats"
+                  :key="index"
+                  class="form-check"
+                >
                   <label class="form-check-label">
                     <input
                       class="form-check-input"
@@ -185,34 +134,7 @@
                       value=""
                       checked
                     />
-                    Json
-                    <span class="form-check-sign">
-                      <span class="check"></span>
-                    </span>
-                  </label>
-                </div>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="" />
-                    XLSX
-                    <span class="form-check-sign">
-                      <span class="check"></span>
-                    </span>
-                  </label>
-                </div>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="" />
-                    CSV
-                    <span class="form-check-sign">
-                      <span class="check"></span>
-                    </span>
-                  </label>
-                </div>
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input class="form-check-input" type="checkbox" value="" />
-                    XML
+                    {{ value.ft_text }} ({{value.count}})
                     <span class="form-check-sign">
                       <span class="check"></span>
                     </span>
@@ -227,6 +149,7 @@
   </div>
 </template>
 <script>
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "DataRefine",
   props: {
@@ -235,7 +158,19 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  created() {
+    this.fetchFilterGroupAction();
+  },
+  computed: {
+    ...mapGetters({
+      getFilterGroup: "data_search/getFilterGroup",
+    }),
+  },
+  methods: {
+    ...mapActions({
+      fetchFilterGroupAction: "data_search/fetchFilterGroup",
+    }),
+  },
 };
 </script>
 <style></style>

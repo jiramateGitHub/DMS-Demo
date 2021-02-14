@@ -39,14 +39,14 @@
       </div>
     </div>
     <div class="main main-raised">
-        <div class="row margin-list" >
-          <div class="col-md-3">
-            <DataRefine />
-          </div>
-          <div class="col-md-9">
-            <DataList />
-          </div>
+      <div class="row margin-list">
+        <div class="col-md-3">
+          <DataRefine />
         </div>
+        <div class="col-md-9">
+          <DataList />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -68,15 +68,16 @@ export default {
       search_text: "",
     };
   },
+  created() {
+    this.getFilterGroupAction();
+  },
   computed: {
-    ...mapGetters({
-      getDataList: "data_search/getDataList",
-      getDataNameCurrent: "data_search/getDataNameCurrent",
-    }),
+    ...mapGetters({}),
   },
   methods: {
     ...mapActions({
       findData: "data_search/findData",
+      getFilterGroupAction: "data_search/getFilterGroup",
     }),
     async search() {
       await this.findData(this.search_text);
@@ -85,7 +86,7 @@ export default {
 };
 </script>
 <style>
-.margin-list{
+.margin-list {
   margin-left: 5%;
   margin-right: 5%;
 }

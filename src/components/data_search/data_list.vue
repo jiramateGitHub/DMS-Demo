@@ -55,6 +55,9 @@
             </tbody>
           </table>
         </div>
+        <div class="row">
+          <pre>{{getDataList}}</pre>
+        </div>
       </div>
     </div>
   </div>
