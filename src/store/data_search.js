@@ -39,6 +39,10 @@ const getters = {
         console.log(state.filter_group)
         return state.filter_group
     },
+    getDataFilter: (state) => {
+        console.log(state.data_filter)
+        return state.data_filter
+    }
 }
 
 const actions = {
@@ -47,7 +51,6 @@ const actions = {
             text: payload
         }
         commit("setDataNameCurrent", payload)
-
         await mixinHttpRequest.methods.post("/dms_business_metadata/findList", payload_text).then(async(res) => {
             commit("setDataList", { res })
         });
@@ -60,38 +63,70 @@ const actions = {
         index = 3
         await mixinHttpRequest.methods.get("/dms_base_formats").then(res => { commit("setFilterGroup", { res, index }) })
     },
-    async fetchFilterGroup({ state }) {
-        // let filter_group = {
-        //     dms_base_categories: [],
-        //     dms_base_datagroups: [],
-        //     dms_base_formats: []
-        // };
-        // [0].dms_metadatum.meta_bc_id
-        for (const [key, value] of Object.entries(state.data_list)) {
-            console.log(`${key}: ${value.dms_metadatum.meta_bc_id}`);
-        }
-
-        // let temp = state.filter_group;
-
+    async fetchDataPagination({ commit }, pageNum) {
+        commit("setDataPagination", pageNum)
     },
-    async fetchBusinessData({ commit }, playload) {
-        let id = playload
-        await mixinHttpRequest.methods.get("/dms_metadata/join/" + id).then(async(res) => {
-            commit("setBusinessData", { res })
-        });
+    async fetchDataFilter({ commit }, payload) {
+        commit("setDataFilter", payload)
     },
-    async fetchTechnicalData({ commit }, playload) {
-        let id = playload
-        await mixinHttpRequest.methods.get("/dms_technical_metadata/join/" + id).then(async(res) => {
-            commit("setTechnicalData", { res })
-        });
+    async fetchDataList({ commit }) {
+        commit("createDataFilter", )
     },
     async setDataCurrent({ commit }, payload) {
         commit("setDataCurrent", payload)
     },
+    async fetchBusinessData({ commit }, payload) {
+        let id = payload
+        await mixinHttpRequest.methods.get("/dms_metadata/join/" + id).then(async(res) => {
+            commit("setBusinessData", { res })
+        });
+    },
+    async fetchTechnicalData({ commit }, payload) {
+        let id = payload
+        await mixinHttpRequest.methods.get("/dms_technical_metadata/join/" + id).then(async(res) => {
+            commit("setTechnicalData", { res })
+        });
+    },
 }
 
 const mutations = {
+    createDataFilter(state) {
+        state.data_filter = []
+        for (const index in state.data_list) {
+            if (index == 10) {
+                break;
+            }
+            state.data_filter.push(state.data_list[index]);
+        }
+    },
+    setDataFilter(state, payload) {
+        var objList = state.data_list;
+        if (payload.type == "bc") {
+            objList = objList.filter((res) => res.dms_metadatum.meta_bc_id == payload.id);
+        } else {
+            objList = objList.filter((res) => res.meta_active == "Y");
+        }
+
+        state.data_filter = objList
+    },
+    setDataPagination(state, pageNum) {
+        state.data_filter = [];
+        let count;
+        if (pageNum == 1) {
+            count = 0;
+        } else {
+            count = pageNum * 10 - 10;
+        }
+        let countIndex = 0;
+        for (var index = count; index < state.data_list.length; index++) {
+            countIndex++;
+            if (countIndex == 11) {
+                break;
+            }
+            state.data_filter.push(state.data_list[index]);
+        }
+    },
+
     setDataList(state, { res }) {
         state.data_list = res.data
     },

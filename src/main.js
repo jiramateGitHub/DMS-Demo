@@ -1,8 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
 import store from './store'
+import Paginate from 'vuejs-paginate'
 
 Vue.config.productionTip = false
+
+Vue.component('paginate', Paginate)
 
 import VueRouter from "vue-router";
 Vue.use(VueRouter);

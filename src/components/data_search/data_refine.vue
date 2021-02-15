@@ -41,18 +41,21 @@
                   :key="index"
                   class="form-check"
                 >
-                  <label class="form-check-label">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      value=""
-                      checked
-                    />
-                    {{ value.bc_name }} ({{value.count}})
-                    <span class="form-check-sign">
-                      <span class="check"></span>
-                    </span>
-                  </label>
+                  <div v-if="value.count != 0">
+                    <label class="form-check-label">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        checked
+                        @change="reloadFilter($event,value.bc_id, 'bc')"
+                      />
+                      {{ value.bc_name }} ({{ value.count }})
+                      <span class="form-check-sign">
+                        <span class="check"></span>
+                      </span>
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
@@ -84,18 +87,20 @@
                   :key="index"
                   class="form-check"
                 >
-                  <label class="form-check-label">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      value=""
-                      checked
-                    />
-                    {{ value.grp_name }} ({{value.count}})
-                    <span class="form-check-sign">
-                      <span class="check"></span>
-                    </span>
-                  </label>
+                  <div v-if="value.count != 0">
+                    <label class="form-check-label">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        checked
+                      />
+                      {{ value.grp_name }} ({{ value.count }})
+                      <span class="form-check-sign">
+                        <span class="check"></span>
+                      </span>
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
@@ -127,18 +132,20 @@
                   :key="index"
                   class="form-check"
                 >
-                  <label class="form-check-label">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      value=""
-                      checked
-                    />
-                    {{ value.ft_text }} ({{value.count}})
-                    <span class="form-check-sign">
-                      <span class="check"></span>
-                    </span>
-                  </label>
+                  <div v-if="value.count != 0">
+                    <label class="form-check-label">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        checked
+                      />
+                      {{ value.ft_text }} ({{ value.count }})
+                      <span class="form-check-sign">
+                        <span class="check"></span>
+                      </span>
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
@@ -158,9 +165,7 @@ export default {
   data() {
     return {};
   },
-  created() {
-    this.fetchFilterGroupAction();
-  },
+  created() {},
   computed: {
     ...mapGetters({
       getFilterGroup: "data_search/getFilterGroup",
@@ -168,8 +173,16 @@ export default {
   },
   methods: {
     ...mapActions({
-      fetchFilterGroupAction: "data_search/fetchFilterGroup",
+      fetchDataFilter: "data_search/fetchDataFilter",
     }),
+    reloadFilter(event,id, type) {
+      let temp = {
+        id : id,
+        type : type,
+        check  : event.target.checked
+      }
+      this.fetchDataFilter(temp);
+    },
   },
 };
 </script>

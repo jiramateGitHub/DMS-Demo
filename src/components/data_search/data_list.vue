@@ -18,12 +18,12 @@
             </thead>
             <tbody>
               <tr
-                v-for="(value, index) in getDataList"
+                v-for="(value, index) in getDataFilter"
                 :key="index"
                 @click="info(value)"
               >
                 <td class="td-name">
-                  <a >{{ value.dms_metadatum.meta_name }}</a>
+                  <a>{{ value.dms_metadatum.meta_name }}</a>
                   <br />
                   <small
                     >ปรับปรุงล่าสุด
@@ -56,8 +56,27 @@
           </table>
         </div>
         <div class="row">
-          <pre>{{getDataList}}</pre>
+          <div class="offset-md-4 col-md-4 col-md-4">
+            <paginate
+              v-model="page"
+              :page-count="countPage"
+              :page-range="3"
+              :margin-pages="2"
+              :click-handler="reloadList"
+              :prev-text="'Prev'"
+              :next-text="'Next'"
+              :container-class="'pagination pagination-primary'"
+              :page-class="'page-item'"
+              :page-link-class="'page-link'"
+              :prev-link-class="'page-link'"
+              :next-link-class="'page-link'"
+            >
+            </paginate>
+          </div>
         </div>
+        <!-- <div class="row">
+          <pre>{{getDataList}}</pre>
+        </div> -->
       </div>
     </div>
   </div>
@@ -70,12 +89,20 @@ export default {
     msg: String,
   },
   data() {
-    return {};
+    return {
+      page: 1,
+      countPage: 0,
+    };
+  },
+  created() {
+    this.countPage = this.getDataList.length / 10;
+    this.fetchDataList();
   },
   computed: {
     ...mapGetters({
       getDataList: "data_search/getDataList",
       getDataNameCurrent: "data_search/getDataNameCurrent",
+      getDataFilter: "data_search/getDataFilter",
     }),
   },
   methods: {
@@ -84,6 +111,8 @@ export default {
       setDataCurrent: "data_search/setDataCurrent",
       fetchBusinessData: "data_search/fetchBusinessData",
       fetchTechnicalData: "data_search/fetchTechnicalData",
+      fetchDataList: "data_search/fetchDataList",
+      fetchDataPagination: "data_search/fetchDataPagination",
     }),
     async info(value) {
       console.log(value);
@@ -92,7 +121,12 @@ export default {
       await this.fetchTechnicalData(value.bsm_meta_id);
       this.$router.push({ path: "/data_info" });
     },
+    async reloadList(pageNum) {
+      await this.fetchDataPagination(pageNum);
+      window.scrollTo(0, 0);
+    },
   },
 };
 </script>
-<style></style>
+
+<style lang="css"></style>

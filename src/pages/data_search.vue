@@ -41,10 +41,10 @@
     <div class="main main-raised">
       <div class="row margin-list">
         <div class="col-md-3">
-          <DataRefine />
+          <DataRefine :key="index"/>
         </div>
         <div class="col-md-9">
-          <DataList />
+          <DataList :key="index"/>
         </div>
       </div>
     </div>
@@ -66,21 +66,27 @@ export default {
   data() {
     return {
       search_text: "",
+      index : 1
     };
   },
   created() {
     this.getFilterGroupAction();
+  },
+  mounted() {
+   
   },
   computed: {
     ...mapGetters({}),
   },
   methods: {
     ...mapActions({
-      findData: "data_search/findData",
+      findDataAction: "data_search/findData",
       getFilterGroupAction: "data_search/getFilterGroup",
     }),
     async search() {
-      await this.findData(this.search_text);
+      await this.findDataAction(this.search_text);
+      await this.getFilterGroupAction();
+      this.index++
     },
   },
 };
