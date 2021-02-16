@@ -7,6 +7,7 @@ const state = {
     data_business: {},
     data_technical: {},
     data_filter: [],
+    data_filter_temp: [],
     filter_group: {
         dms_base_categories: [],
         dms_base_datagroups: [],
@@ -36,6 +37,9 @@ const getters = {
     },
     getDataFilter: (state) => {
         return state.data_filter
+    },
+    getDataFilterTemp: (state) => {
+        return state.data_filter_temp
     }
 }
 
@@ -92,13 +96,14 @@ const mutations = {
             }
             state.data_filter.push(state.data_list[index]);
         }
+        console.log(state.data_filter)
+        state.data_filter_temp = state.data_list
     },
     setDataFilter(state, payload) {
-        var objList = state.data_list;
         let temp = []
         let checkPush = false
-        state.data_list.filter(item => {
-            console.log(item)
+        let temp_data_list = state.data_list
+        temp_data_list.filter(item => {
             checkPush = false
             for (let index = 0; index < payload.id_bc.length; index++) {
                 if (item.dms_metadatum.meta_bc_id == payload.id_bc[index]) {
@@ -126,32 +131,25 @@ const mutations = {
                                 break;
                             }
                         }
+                        if (checkPush == true) {
+                            break
+                        }
                     }
                 }
             }
 
         });
 
-        objList = temp
+        state.data_filter_temp = temp
+        state.data_filter = []
+        console.log(temp)
+        for (let i = 0; i < temp.length; i++) {
+            if (i == 10) {
+                break;
+            }
+            state.data_filter.push(temp[i]);
+        }
 
-        // if (payload.check == true) {
-        //     if (payload.type == "bc") {
-        //         objList = objList.filter((res) => res.dms_metadatum.meta_bc_id == payload.id);
-        //     } else {
-        //         objList = objList.filter((res) => res.meta_active == "Y");
-        //     }
-        // } else {
-        //     if (payload.type == "bc") {
-        //         while (objList.findIndex(e => e.dms_metadatum === payload.id) >= 0) {
-        //             objList.splice(objList.findIndex(e => e.dms_metadatum.meta_bc_id === payload.id), 1);
-        //         }
-        //     } else {
-        //         objList = objList.filter((res) => res.meta_active == "Y");
-        //     }
-        // }
-
-
-        state.data_filter = objList
     },
     setDataPagination(state, pageNum) {
         state.data_filter = [];
@@ -162,12 +160,12 @@ const mutations = {
             count = pageNum * 10 - 10;
         }
         let countIndex = 0;
-        for (var index = count; index < state.data_list.length; index++) {
+        for (var index = count; index < state.data_filter_temp.length; index++) {
             countIndex++;
             if (countIndex == 11) {
                 break;
             }
-            state.data_filter.push(state.data_list[index]);
+            state.data_filter.push(state.data_filter_temp[index]);
         }
     },
 

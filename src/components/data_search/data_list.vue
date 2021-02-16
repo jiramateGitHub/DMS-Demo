@@ -279,6 +279,7 @@ export default {
       getDataList: "data_search/getDataList",
       getDataNameCurrent: "data_search/getDataNameCurrent",
       getDataFilter: "data_search/getDataFilter",
+      getDataFilterTemp: "data_search/getDataFilterTemp",
       getFilterGroup: "data_search/getFilterGroup",
     }),
   },
@@ -310,7 +311,7 @@ export default {
       };
       await this.fetchDataFilter(temp);
       console.log(this.getDataFilter);
-      this.countPage = this.getDataFilter.length / 10;
+      this.countPage = this.getDataFilterTemp.length / 10;
     },
     selectCheck() {
       for (let index in this.getFilterGroup.dms_base_categories) {
