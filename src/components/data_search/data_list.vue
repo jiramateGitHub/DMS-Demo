@@ -97,8 +97,10 @@
                           <input
                             class="form-check-input"
                             type="checkbox"
-                            value=""
+                            v-model="selectedGrp"
+                            :value="value.grp_id"
                             checked
+                            @change="reloadFilter()"
                           />
                           {{ value.grp_name }} ({{ value.count }})
                           <span class="form-check-sign">
@@ -142,8 +144,10 @@
                           <input
                             class="form-check-input"
                             type="checkbox"
-                            value=""
+                            v-model="selectedFt"
+                            :value="value.ft_id"
                             checked
+                            @change="reloadFilter()"
                           />
                           {{ value.ft_text }} ({{ value.count }})
                           <span class="form-check-sign">
@@ -179,6 +183,9 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <tr v-if="getDataFilter.length == 0" >
+                    <td colspan="4" class="text-center">ไม่พบรายการ</td>
+                  </tr>
                   <tr
                     v-for="(value, index) in getDataFilter"
                     :key="index"
@@ -217,7 +224,7 @@
                 </tbody>
               </table>
             </div>
-            <div class="row">
+            <div class="row" v-if="getDataFilter.length != 0">
               <div class="offset-md-4 col-md-4 col-md-4">
                 <paginate
                   v-model="page"
@@ -264,7 +271,7 @@ export default {
   async created() {
     await this.fetchDataList();
     this.countPage = this.getDataList.length / 10;
-    await this.selectCheck()
+    await this.selectCheck();
   },
   mounted() {},
   computed: {
@@ -305,28 +312,30 @@ export default {
       console.log(this.getDataFilter);
       this.countPage = this.getDataFilter.length / 10;
     },
-    selectCheck(){
+    selectCheck() {
       for (let index in this.getFilterGroup.dms_base_categories) {
-      if (this.getFilterGroup.dms_base_categories[index].count != 0) {
-        this.selectedBc.push(
-          this.getFilterGroup.dms_base_categories[index].bc_id
-        );
+        if (this.getFilterGroup.dms_base_categories[index].count != 0) {
+          this.selectedBc.push(
+            this.getFilterGroup.dms_base_categories[index].bc_id
+          );
+        }
       }
-    }
-    for (let index in this.getFilterGroup.dms_base_datagroups) {
-      if (this.getFilterGroup.dms_base_datagroups[index].count != 0) {
-        this.selectedGrp.push(
-          this.getFilterGroup.dms_base_datagroups[index].grp_id
-        );
+      for (let index in this.getFilterGroup.dms_base_datagroups) {
+        if (this.getFilterGroup.dms_base_datagroups[index].count != 0) {
+          this.selectedGrp.push(
+            this.getFilterGroup.dms_base_datagroups[index].grp_id
+          );
+        }
       }
-    }
-    for (let index in this.getFilterGroup.dms_base_formats) {
-      if (this.getFilterGroup.dms_base_formats[index].count != 0) {
-        this.selectedFt.push(this.getFilterGroup.dms_base_formats[index].ft_id);
+      for (let index in this.getFilterGroup.dms_base_formats) {
+        if (this.getFilterGroup.dms_base_formats[index].count != 0) {
+          this.selectedFt.push(
+            this.getFilterGroup.dms_base_formats[index].ft_id
+          );
+        }
       }
-    }
-    console.log(this.selectedBc);
-    }
+      console.log(this.selectedBc);
+    },
   },
 };
 </script>

@@ -95,14 +95,41 @@ const mutations = {
     },
     setDataFilter(state, payload) {
         var objList = state.data_list;
-        console.log(payload)
         let temp = []
+        let checkPush = false
         state.data_list.filter(item => {
+            console.log(item)
+            checkPush = false
             for (let index = 0; index < payload.id_bc.length; index++) {
                 if (item.dms_metadatum.meta_bc_id == payload.id_bc[index]) {
                     temp.push(item)
+                    checkPush = true;
+                    break;
                 }
             }
+
+            if (checkPush == false) {
+                for (let index = 0; index < payload.id_grp.length; index++) {
+                    if (item.dms_metadatum.meta_grp_id == payload.id_grp[index]) {
+                        temp.push(item)
+                        checkPush = true;
+                        break;
+                    }
+                }
+
+                if (checkPush == false) {
+                    for (let i = 0; i < payload.id_ft.length; i++) {
+                        for (let j = 0; j < item.dms_base_formats.length; j++) {
+                            if (item.dms_base_formats[j].ft_id == payload.id_ft[i]) {
+                                temp.push(item)
+                                checkPush = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+
         });
 
         objList = temp
