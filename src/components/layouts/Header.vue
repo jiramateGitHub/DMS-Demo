@@ -34,7 +34,7 @@
                 <i class="material-icons">apps</i> สำหรับเจ้าหน้าที่
               </a>
               <div class="dropdown-menu dropdown-with-icons">
-                <a href="./presentation.html" class="dropdown-item">
+                <a href="" class="dropdown-item">
                   <i class="material-icons">layers</i> Admin
                 </a>
               </div>

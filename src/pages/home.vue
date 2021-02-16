@@ -15,29 +15,28 @@
           <div class="col-md-8 ml-auto mr-auto">
             <div class="card card-raised card-form-horizontal">
               <div class="card-body">
-                  <div class="row">
-                    <div class="col-md-9">
-                      <div class="form-group">
-                        <input
-                          type="text"
-                          value=""
-                          placeholder="ค้นหาชุดข้อมูล"
-                          class="form-control"
-                          v-model="search_text"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-md-3">
-                      <button
-                        type="button"
-                        class="btn btn-primary btn-block"
-                        @click="search()"
-                      >
-                        ค้นหา
-                      </button>
+                <div class="row">
+                  <div class="col-md-9">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        value=""
+                        placeholder="ค้นหาชุดข้อมูล"
+                        class="form-control"
+                        v-model="search_text"
+                      />
                     </div>
                   </div>
-                
+                  <div class="col-md-3">
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-block"
+                      @click="search()"
+                    >
+                      ค้นหา
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -51,57 +50,49 @@
           <div class="features-1">
             <div class="row">
               <div class="col-md-12 ml-auto mr-auto">
-                <h2 class="title">Open Government Data of Thailand</h2>
+                <h2 class="title">Open Government Data</h2>
                 <h5 class="description">
-                  ศูนย์กลางข้อมูลเปิดภาครัฐ (Open Government Data) ภายใต้ชื่อ
-                  “data.go.th” ที่สำนักงานพัฒนารัฐบาลดิจิทัล (องค์การมหาชน) หรือ
-                  สพร.
-                  พัฒนาขึ้นภายใต้แนวคิดการเป็นศูนย์กลางในการเข้าถึงข้อมูลเปิดภาครัฐของประเทศที่ให้ประชาชนสามารถเข้าถึงข้อมูลภาครัฐได้สะดวก
-                  รวดเร็ว ตลอดเวลา
-                  โดยข้อมูลที่เผยแพร่อยู่ในรูปแบบไฟล์ที่สามารถแสดงตัวอย่างข้อมูล
-                  (Preview) การแสดงข้อมูลด้วยภาพ (Visualization) และเอพีไอ (API)
-                  แบบอัตโนมัติให้กับชุดข้อมูลที่เผยแพร่ได้
-                  รวมทั้งยังสามารถจัดการชุดข้อมูลและเมทาดาตาของข้อมูลได้อีกด้วย
+                  ศูนย์กลางข้อมูลเปิดนี้รวบรวมชุดข้อมูลหลัก (Master Data Set)
+                  โดยการจําแนกหมวดหมู้ข้อมูล และคําอธิบาย
+                  ข้อมูลที่ใช้ในการบริหารจัดการ และการบริการต่าง ๆ
+                </h5>
+                <h5 class="description">
+                  ตามพันธกิจหลักของ .... ทั้งนี้โดยดําเนินการตาม กฎหมายมาตรา 8
+                  แห่งพระราชบัญญัติการบริหารงานและการใหบริการภาครัฐผ่านระบบดิจิทัล
+                  พ.ศ. 2562
+                </h5>
+                <h5 class="description">
+                  และกรอบการกํากับดูแลข้อมูล หรือที่เรียกว่า
+                  กรอบธรรมาภิบาลข้อมูล (Data Governance Framework) ตาม
+                  ประกาศระเบียบภายใต้พระราชบัญญัติฉบับนี้
                 </h5>
               </div>
             </div>
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <div class="info">
                   <div class="icon icon-info">
                     <i class="material-icons">chat</i>
                   </div>
-                  <h4 class="info-title">Free Chat</h4>
+                  <h4 class="info-title">หมวดหมู่ข้อมูล</h4>
                   <p>
-                    Divide details about your product or agency work into parts.
-                    Write a few lines about each one. A paragraph describing a
-                    feature will be enough.
+                    การนิยามข้อมูลต้องมีความถูกต้องและชัดเจน<br>
+                    เพื่อสร้างความเข้าใจที่ตรงกันระหว่างผู้ที่เกี่ยวข้อง<br>
+                    ทั้งนี้การจัดหมวดหมู่ของข้อมูลทำให้มองเห็นถึงภาพรวมของข้อมูล
+                    ขณะที่การทำเมทาดาตาเพื่อสร้างความ เข้าใจต่อข้อมูลมากยิ่งขึ้น
                   </p>
                 </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <div class="info">
                   <div class="icon icon-success">
                     <i class="material-icons">verified_user</i>
                   </div>
-                  <h4 class="info-title">Verified Users</h4>
+                  <h4 class="info-title">กลุ่มข้อมูล</h4>
                   <p>
-                    Divide details about your product or agency work into parts.
-                    Write a few lines about each one. A paragraph describing a
-                    feature will be enough.
-                  </p>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="info">
-                  <div class="icon icon-danger">
-                    <i class="material-icons">fingerprint</i>
-                  </div>
-                  <h4 class="info-title">Fingerprint</h4>
-                  <p>
-                    Divide details about your product or agency work into parts.
-                    Write a few lines about each one. A paragraph describing a
-                    feature will be enough.
+                    ทั้งนี้ .... ได้จําแนกชุดข้อมูลหลักออกมาเป็น 8 กลุ่มข้อมูล
+                    โดยความสอดคล้องกับสถาปัตยกรรมข้อมูล ของ .... (Enterprise
+                    Data Architecture)
                   </p>
                 </div>
               </div>
@@ -178,8 +169,8 @@ export default {
       search_text: "",
     };
   },
-  created(){
-    console.log("Welcome")
+  created() {
+    console.log("Welcome");
   },
   computed: {
     ...mapGetters({}),
