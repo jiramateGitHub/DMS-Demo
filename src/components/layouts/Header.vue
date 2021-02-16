@@ -35,7 +35,7 @@
               </a>
               <div class="dropdown-menu dropdown-with-icons">
                 <a href="./presentation.html" class="dropdown-item">
-                  <i class="material-icons">layers</i> Presentation
+                  <i class="material-icons">layers</i> Admin
                 </a>
               </div>
             </li>

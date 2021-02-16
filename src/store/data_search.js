@@ -17,30 +17,24 @@ const state = {
 
 const getters = {
     getDataList: (state) => {
-        console.log(state.data_list)
         return state.data_list
     },
     getDataCurrent: (state) => {
-        console.log(state.data_list_current)
         return state.data_current
     },
     getDataNameCurrent: (state) => {
         return state.data_name_current
     },
     getDataBusiness: (state) => {
-        console.log(state.data_business)
         return state.data_business
     },
     getDataTechnical: (state) => {
-        console.log(state.data_technical)
-        return state.data_technical
+        return state.data_technical[0]
     },
     getFilterGroup: (state) => {
-        console.log(state.filter_group)
         return state.filter_group
     },
     getDataFilter: (state) => {
-        console.log(state.data_filter)
         return state.data_filter
     }
 }
@@ -76,14 +70,14 @@ const actions = {
         commit("setDataCurrent", payload)
     },
     async fetchBusinessData({ commit }, payload) {
-        let id = payload
-        await mixinHttpRequest.methods.get("/dms_metadata/join/" + id).then(async(res) => {
+        let meta_id = payload
+        await mixinHttpRequest.methods.get("/dms_metadata/join/" + meta_id).then(async(res) => {
             commit("setBusinessData", { res })
         });
     },
     async fetchTechnicalData({ commit }, payload) {
-        let id = payload
-        await mixinHttpRequest.methods.get("/dms_technical_metadata/join/" + id).then(async(res) => {
+        let meta_id = payload
+        await mixinHttpRequest.methods.get("/dms_technical_metadata/join/" + meta_id).then(async(res) => {
             commit("setTechnicalData", { res })
         });
     },

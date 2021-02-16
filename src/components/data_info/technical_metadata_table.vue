@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row">
-      <div class="table-responsive">
+      <div class="table-responsive"  v-if="getDataTechnical != null">
         <table class="table table-striped">
           <thead>
             <tr>
