@@ -178,6 +178,9 @@ export default {
       search_text: "",
     };
   },
+  created(){
+    console.log("Welcome")
+  },
   computed: {
     ...mapGetters({}),
   },

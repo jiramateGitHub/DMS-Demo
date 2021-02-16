@@ -11,7 +11,7 @@
           <div class="card bg-info">
             <div class="card-body">
               <h3 class="card-title">
-                <a href="#">"{{getDataBusiness.meta_name}}"</a>
+                <a href="#">“{{getDataBusiness.meta_name}}”</a>
               </h3>
               <p class="card-description">
                 {{getDataCurrent.dms_business_descriptions[0].bsds_text}}

@@ -95,11 +95,34 @@ const mutations = {
     },
     setDataFilter(state, payload) {
         var objList = state.data_list;
-        if (payload.type == "bc") {
-            objList = objList.filter((res) => res.dms_metadatum.meta_bc_id == payload.id);
-        } else {
-            objList = objList.filter((res) => res.meta_active == "Y");
-        }
+        console.log(payload)
+        let temp = []
+        state.data_list.filter(item => {
+            for (let index = 0; index < payload.id_bc.length; index++) {
+                if (item.dms_metadatum.meta_bc_id == payload.id_bc[index]) {
+                    temp.push(item)
+                }
+            }
+        });
+
+        objList = temp
+
+        // if (payload.check == true) {
+        //     if (payload.type == "bc") {
+        //         objList = objList.filter((res) => res.dms_metadatum.meta_bc_id == payload.id);
+        //     } else {
+        //         objList = objList.filter((res) => res.meta_active == "Y");
+        //     }
+        // } else {
+        //     if (payload.type == "bc") {
+        //         while (objList.findIndex(e => e.dms_metadatum === payload.id) >= 0) {
+        //             objList.splice(objList.findIndex(e => e.dms_metadatum.meta_bc_id === payload.id), 1);
+        //         }
+        //     } else {
+        //         objList = objList.filter((res) => res.meta_active == "Y");
+        //     }
+        // }
+
 
         state.data_filter = objList
     },

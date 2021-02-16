@@ -39,19 +39,11 @@
       </div>
     </div>
     <div class="main main-raised">
-      <div class="row margin-list">
-        <div class="col-md-3">
-          <DataRefine :key="index"/>
-        </div>
-        <div class="col-md-9">
-          <DataList :key="index"/>
-        </div>
-      </div>
+      <DataList :key="index" />
     </div>
   </div>
 </template>
 <script>
-import DataRefine from "../components/data_search/data_refine.vue";
 import DataList from "../components/data_search/data_list.vue";
 import { mapActions, mapGetters } from "vuex";
 export default {
@@ -60,21 +52,19 @@ export default {
     msg: String,
   },
   components: {
-    DataRefine,
     DataList,
   },
   data() {
     return {
       search_text: "",
-      index : 1
+      index: 0,
     };
   },
-  created() {
-    this.getFilterGroupAction();
+  async created() {
+    await this.getFilterGroupAction();
+    this.index++
   },
-  mounted() {
-   
-  },
+  mounted() {},
   computed: {
     ...mapGetters({}),
   },
@@ -86,14 +76,11 @@ export default {
     async search() {
       await this.findDataAction(this.search_text);
       await this.getFilterGroupAction();
-      this.index++
+      this.index++;
     },
   },
 };
 </script>
 <style>
-.margin-list {
-  margin-left: 5%;
-  margin-right: 5%;
-}
+
 </style>
