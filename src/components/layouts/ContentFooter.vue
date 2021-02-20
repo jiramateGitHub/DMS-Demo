@@ -5,16 +5,13 @@
         <nav class="float-left">
           <ul>
             <li>
-              <a href="https://creative-tim.com/presentation"> About Us </a>
+              <a href=""> About Us </a>
             </li>
           </ul>
         </nav>
         <div class="copyright float-right">
-          &copy; , made with <i class="material-icons">favorite</i> by
-          <a href="https://www.creative-tim.com" target="_blank"
-            >Creative Tim</a
-          >
-          for a better web.
+          COPYRIGHT © 2020 - 2021
+          <a href="" target="_blank">ALLOSOFT.</a> ALL RIGHTS RESERVED
         </div>
       </div>
     </footer>
