@@ -189,7 +189,7 @@
                   <tr
                     v-for="(value, index) in getDataFilter"
                     :key="index"
-                    @click="info(value)"
+                    @click="routeInfo(value)"
                   >
                     <td class="td-name">
                       <a>{{ value.dms_metadatum.meta_name }}</a>
@@ -293,7 +293,7 @@ export default {
       changeDataPagination: "data_search/changeDataPagination",
       fetchDataFilter: "data_search/fetchDataFilter",
     }),
-    async info(value) {
+    async routeInfo(value) {
       await this.setDataCurrent(value);
       await this.fetchBusinessData(value.bsm_meta_id);
       await this.fetchTechnicalData(value.bsm_meta_id);
@@ -304,12 +304,12 @@ export default {
       window.scrollTo(0, 0);
     },
     async reloadFilter() {
-      let temp = {
+      let playload = {
         id_bc: this.selectedBc,
         id_grp: this.selectedGrp,
         id_ft: this.selectedFt,
       };
-      await this.fetchDataFilter(temp);
+      await this.fetchDataFilter(playload);
       console.log(this.getDataFilter);
       this.countPage = this.getDataFilterTemp.length / 10;
     },

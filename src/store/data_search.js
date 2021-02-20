@@ -106,7 +106,7 @@ const mutations = {
     },
     setDataFilter(state, payload) {
         let temp = []
-        let checkPush = false
+        let checkPush = false // if checkPush = true is break loop and stop to push data in temp_data_list filter
         let temp_data_list = state.data_list
         temp_data_list.filter(item => {
             checkPush = false
@@ -147,13 +147,14 @@ const mutations = {
 
         state.data_filter_temp = temp
         state.data_filter = []
+
+        //createDataList for data pagination
         for (let i = 0; i < temp.length; i++) {
             if (i == 10) {
                 break;
             }
             state.data_filter.push(temp[i]);
         }
-
     },
     changeDataPagination(state, pageNum) {
         state.data_filter = [];
@@ -172,7 +173,6 @@ const mutations = {
             state.data_filter.push(state.data_filter_temp[index]);
         }
     },
-
     setDataList(state, { res }) {
         state.data_list = res.data
     },
@@ -189,46 +189,46 @@ const mutations = {
         state.data_technical = res.data
     },
     setFilterGroup(state, { res, index }) {
-        var temp = 0;
+        var tempCount = 0;
         var i = 0;
         var j = 0;
         var k = 0;
         if (index == 1) {
             state.filter_group.dms_base_categories = res.data
             for (i = 0; i < state.filter_group.dms_base_categories.length; i++) {
-                temp = 0;
+                tempCount = 0;
                 for (j = 0; j < state.data_list.length; j++) {
                     if (state.filter_group.dms_base_categories[i].bc_id == state.data_list[j].dms_metadatum.meta_bc_id) {
-                        temp++;
+                        tempCount++;
                     }
                 }
-                state.filter_group.dms_base_categories[i].count = temp;
+                state.filter_group.dms_base_categories[i].count = tempCount;
             }
         }
         if (index == 2) {
             state.filter_group.dms_base_datagroups = res.data
             for (i = 0; i < state.filter_group.dms_base_datagroups.length; i++) {
-                temp = 0;
+                tempCount = 0;
                 for (j = 0; j < state.data_list.length; j++) {
                     if (state.filter_group.dms_base_datagroups[i].grp_id == state.data_list[j].dms_metadatum.meta_grp_id) {
-                        temp++;
+                        tempCount++;
                     }
                 }
-                state.filter_group.dms_base_datagroups[i].count = temp;
+                state.filter_group.dms_base_datagroups[i].count = tempCount;
             }
         }
         if (index == 3) {
             state.filter_group.dms_base_formats = res.data
             for (i = 0; i < state.filter_group.dms_base_formats.length; i++) {
-                temp = 0;
+                tempCount = 0;
                 for (j = 0; j < state.data_list.length; j++) {
                     for (k = 0; k < state.data_list[j].dms_base_formats.length; k++) {
                         if (state.filter_group.dms_base_formats[i].ft_id == state.data_list[j].dms_base_formats[k].ft_id) {
-                            temp++;
+                            tempCount++;
                         }
                     }
                 }
-                state.filter_group.dms_base_formats[i].count = temp;
+                state.filter_group.dms_base_formats[i].count = tempCount;
             }
         }
     },
