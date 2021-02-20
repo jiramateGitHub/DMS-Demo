@@ -13,7 +13,6 @@ const state = {
         dms_base_datagroups: [],
         dms_base_formats: []
     },
-
 }
 
 const getters = {
@@ -44,16 +43,23 @@ const getters = {
 }
 
 const actions = {
+    // Function : findData
+    // Detail   : ใช้สำหรับค้นหาชุดข้อมูลจาก API
     async findData({ commit }, payload) {
+        // payload_text is json request body
+        // payload is keyword for search dataset
         let payload_text = {
             text: payload
         }
-        commit("setDataNameCurrent", payload)
+        commit("setDataNameCurrent", payload) // set keyword current that search now
         await mixinHttpRequest.methods.post("/dms_business_metadata/findList", payload_text).then(async(res) => {
             commit("setDataList", { res })
         });
     },
+    // Function : getFilterGroup
+    // Detail   : ใช้สำหรับดึงค่าของ dms_base_categories, dms_base_datagroups และ dms_base_formats สำหรับฟิลเตอร์ชุดข้อมูลมาแสดง
     async getFilterGroup({ commit }) {
+        // index is use for set value in filter_group array on commit setFilterGroup
         let index = 1
         await mixinHttpRequest.methods.get("/dms_base_categories").then(res => { commit("setFilterGroup", { res, index }) })
         index = 2
@@ -61,14 +67,14 @@ const actions = {
         index = 3
         await mixinHttpRequest.methods.get("/dms_base_formats").then(res => { commit("setFilterGroup", { res, index }) })
     },
-    async fetchDataPagination({ commit }, pageNum) {
-        commit("setDataPagination", pageNum)
+    async changeDataPagination({ commit }, pageNum) {
+        commit("changeDataPagination", pageNum)
     },
     async fetchDataFilter({ commit }, payload) {
         commit("setDataFilter", payload)
     },
     async fetchDataList({ commit }) {
-        commit("createDataFilter", )
+        commit("createDataList", )
     },
     async setDataCurrent({ commit }, payload) {
         commit("setDataCurrent", payload)
@@ -88,7 +94,7 @@ const actions = {
 }
 
 const mutations = {
-    createDataFilter(state) {
+    createDataList(state) {
         state.data_filter = []
         for (const index in state.data_list) {
             if (index == 10) {
@@ -96,7 +102,6 @@ const mutations = {
             }
             state.data_filter.push(state.data_list[index]);
         }
-        console.log(state.data_filter)
         state.data_filter_temp = state.data_list
     },
     setDataFilter(state, payload) {
@@ -142,7 +147,6 @@ const mutations = {
 
         state.data_filter_temp = temp
         state.data_filter = []
-        console.log(temp)
         for (let i = 0; i < temp.length; i++) {
             if (i == 10) {
                 break;
@@ -151,7 +155,7 @@ const mutations = {
         }
 
     },
-    setDataPagination(state, pageNum) {
+    changeDataPagination(state, pageNum) {
         state.data_filter = [];
         let count;
         if (pageNum == 1) {

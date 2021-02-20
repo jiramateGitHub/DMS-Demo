@@ -290,7 +290,7 @@ export default {
       fetchBusinessData: "data_search/fetchBusinessData",
       fetchTechnicalData: "data_search/fetchTechnicalData",
       fetchDataList: "data_search/fetchDataList",
-      fetchDataPagination: "data_search/fetchDataPagination",
+      changeDataPagination: "data_search/changeDataPagination",
       fetchDataFilter: "data_search/fetchDataFilter",
     }),
     async info(value) {
@@ -300,7 +300,7 @@ export default {
       this.$router.push({ path: "/data_info" });
     },
     async reloadList(pageNum) {
-      await this.fetchDataPagination(pageNum);
+      await this.changeDataPagination(pageNum);
       window.scrollTo(0, 0);
     },
     async reloadFilter() {
