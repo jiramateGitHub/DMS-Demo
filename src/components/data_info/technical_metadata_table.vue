@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row">
-      <div class="table-responsive"  v-if="getDataTechnical != null">
+      <div class="table-responsive" v-if="getDataTechnical != null">
         <table class="table table-striped">
           <thead>
             <tr>
@@ -12,7 +12,7 @@
               <th class="text-center">คีย์ข้อมูล</th>
               <th class="text-center">ตัวอย่างข้อมูล</th>
               <th class="text-center">หมายเหตุ</th>
-              <th class="text-center">ข้อมูลนิรนาม</th>
+              <!-- <th class="text-center">ข้อมูลนิรนาม</th> -->
             </tr>
           </thead>
           <tbody>
@@ -28,9 +28,16 @@
               <td class="text-center">{{ value.tcd_type }}</td>
               <td class="text-center">{{ value.tcd_length }}</td>
               <td class="text-center">{{ value.tcd_key }}</td>
-              <td class="text-left">{{ value.tcd_sample }}</td>
+              <td class="text-left">
+                <div v-if="value.tcd_anonymous == 0">
+                  {{ value.tcd_sample }}
+                </div>
+                <div v-if="value.tcd_anonymous == 1">
+                  ไม่เปิดเผยข้อมูล
+                </div>
+              </td>
               <td class="text-left">{{ value.tcd_comment }}</td>
-              <td class="text-center">
+              <!-- <td class="text-center">
                 <div class="form-check">
                   <label class="form-check-label">
                     <input
@@ -51,7 +58,7 @@
                     </span>
                   </label>
                 </div>
-              </td>
+              </td> -->
             </tr>
           </tbody>
         </table>
